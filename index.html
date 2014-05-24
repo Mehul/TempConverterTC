@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple temperature conversion calculator</title>
+    <script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
+  </head>
+  <body>
+    <h2>Fahrenheit to Celsius Converter</h2>
+
+    <form>
+      <label for="inputTemp">Input temperature:</label>
+      <input id="inputTemp" type="text">
+      <br />
+      <button id="calcButton" type="button">Convert</button>
+    </form>
+
+    <p>
+      Temperature in Celsius: <span id="outputTemp">0</span>
+    </p>
+
+    <script>
+    $(function () {
+      var
+        convertToCelsius = function (f) {
+          return (f - 32) * 5 / 9;
+        },
+        onClick = function () {
+          var
+            inputTemp = parseFloat($("#inputTemp").val(), 10),
+            outputTemp = convertToCelsius(inputTemp);
+
+          $("#outputTemp").text(outputTemp.toFixed(2));
+        };
+
+        $("#calcButton").on("click", onClick);
+        $("#inputTemp").focus();
+    });
+    </script>
+  </body>
+</html>
